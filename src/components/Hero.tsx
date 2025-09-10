@@ -2,91 +2,90 @@ import { GradientButton } from '@/components/ui/gradient-button'
 import { Button as MovingBorderButton } from '@/components/ui/moving-border'
 import { SkillsCarousel } from '@/components/ui/skills-carousel'
 import ShaderBackground from '@/components/ui/shader-background'
-import { Download, Github, Linkedin, Mail } from 'lucide-react'
+import { Download, Github, Linkedin, Mail, Heart, Zap } from 'lucide-react'
 
 const Hero = () => {
   return (
-    <ShaderBackground className="min-h-screen">
-      <section id="home" className="min-h-screen flex items-center justify-center px-4 py-20 relative">
-        <div className="container mx-auto text-center">
+    <ShaderBackground className="min-h-screen bg-retro-black">
+      <section id="home" className="min-h-screen flex items-center justify-center px-4 py-20 relative overflow-hidden bg-retro-black text-white">
+        {/* CRT Screen Effect */}
+        <div className="crt absolute inset-0 pointer-events-none"></div>
+        
+        {/* Pixel border effect */}
+        <div className="absolute inset-0 border-4 border-retro-yellow m-2 pointer-events-none"></div>
+        
+        <div className="container mx-auto text-center relative z-10">
           <div className="animate-fade-in">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
-              <span className="block text-white">Heya! I'm</span>
-              <span className="block text-transparent bg-gradient-to-r 
-                from-yellow-500 via-red-100 to-indigo-800
-                bg-clip-text">
-                Gaurav Murali
+            <div className="mb-6">
+              <span className="inline-block px-4 py-2 bg-retro-red text-white text-sm font-press-start mb-4">
+                PLAYER 1 - READY
+              </span>
+            </div>
+            
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 font-press-start">
+              <span className="block text-retro-yellow mb-2">HEYA! I'M</span>
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r 
+                from-retro-red via-retro-yellow to-retro-cyan
+                animate-glow">
+                GAURAV
               </span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-white/80 mb-8 max-w-3xl mx-auto">
-            I'm a passionate problem-solver with an eye for design, driven to build meaningful projects that inspire me and benefit others.
+            <p className="text-xl md:text-2xl text-retro-cyan mb-8 max-w-3xl mx-auto font-orbitron tracking-wider">
+              <span className="text-retro-yellow"></span><span className="text-retro-red"></span>
             </p>
+            
+            <div className="health-bar flex justify-center mb-8">
+              <div className="w-full max-w-md h-6 bg-retro-dark border-2 border-retro-yellow p-1">
+                <div className="h-full bg-gradient-to-r from-health-red via-health-yellow to-retro-green w-full flex items-center justify-end pr-2">
+                  <span className="text-xs font-press-start text-retro-black">100%</span>
+                </div>
+              </div>
+            </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-              <GradientButton 
-                asChild
-                className="min-w-[200px]"
+              <button 
+                className="pixel-button"
+                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                <a 
-                  href="https://drive.google.com/file/d/1PCQyOcwyLfOz7EIO4UgCaS24G9V7_QT4/view?usp=sharing" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                >
-                  <Download className="mr-2 h-5 w-5" />
-                  Download CV
-                </a>
-              </GradientButton>
-            </div>
-
-            <div className="flex justify-center space-x-4 mb-16">
-              <MovingBorderButton
-                as="a"
-                href="https://github.com/gaxxrav"
-                target="_blank"
-                rel="noopener noreferrer"
-                borderRadius="1rem"
-                containerClassName="h-12 w-12"
-                className="bg-white/10 backdrop-blur-sm text-white border-white/20"
-                borderClassName="h-16 w-16 opacity-[0.8] bg-[radial-gradient(var(--green-500)_40%,transparent_60%)]"
-                duration={2000}
-              >
-                <Github className="h-5 w-5" />
-              </MovingBorderButton>
+                <Zap className="inline-block mr-2 h-4 w-4" />
+                CHALLENGE ME
+              </button>
               
-              <MovingBorderButton
-                as="a"
-                href="https://www.linkedin.com/in/gaurav-murali-9098bb258/"
-                target="_blank"
-                rel="noopener noreferrer"
-                borderRadius="1rem"
-                containerClassName="h-12 w-12"
-                className="bg-white/10 backdrop-blur-sm text-white border-white/20"
-                borderClassName="h-16 w-16 opacity-[0.8] bg-[radial-gradient(var(--blue-500)_40%,transparent_60%)]"
-                duration={2500}
+              <a 
+                href="/resume.pdf" 
+                className="pixel-button bg-retro-blue hover:bg-retro-cyan"
+                download
               >
-                <Linkedin className="h-5 w-5" />
-              </MovingBorderButton>
-              
-              <MovingBorderButton
-                as="a"
-                href="mailto:gaurav.murali3@gmail.com"
-                borderRadius="1rem"
-                containerClassName="h-12 w-12"
-                className="bg-white/10 backdrop-blur-sm text-white border-white/20"
-                borderClassName="h-16 w-16 opacity-[0.8] bg-[radial-gradient(var(--red-500)_40%,transparent_60%)]"
-                duration={3000}
-              >
-                <Mail className="h-5 w-5" />
-              </MovingBorderButton>
+                <Download className="inline-block mr-2 h-4 w-4" />
+                DOWNLOAD CV
+              </a>
             </div>
-
-            <SkillsCarousel className="mt-8" />
+            
+            <div className="flex justify-center space-x-6">
+              <a href="https://github.com/gaxxrav" target="_blank" rel="noopener noreferrer" 
+                 className="text-retro-pink hover:text-retro-cyan transition-colors">
+                <Github className="h-6 w-6" />
+              </a>
+              <a href="https://linkedin.com/in/gaurav-murali-9098bb258/" target="_blank" rel="noopener noreferrer"
+                 className="text-retro-pink hover:text-retro-cyan transition-colors">
+                <Linkedin className="h-6 w-6" />
+              </a>
+              <a href="mailto:gaurav.murali3@gmail.com" className="text-retro-pink hover:text-retro-cyan transition-colors">
+                <Mail className="h-6 w-6" />
+              </a>
+            </div>
           </div>
         </div>
         
-        {/* Gradient fade transition to dark background */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-gray-900 pointer-events-none"></div>
+        {/* Pixel art decoration */}
+        <div className="absolute bottom-8 left-8 w-16 h-16 border-4 border-retro-yellow flex items-center justify-center">
+          <span className="font-press-start text-xs">1UP</span>
+        </div>
+        
+        <div className="absolute bottom-8 right-8 text-retro-yellow font-press-start text-xs">
+          2025 GAX
+        </div>
       </section>
     </ShaderBackground>
   )
