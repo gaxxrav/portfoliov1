@@ -6,7 +6,7 @@ const About = () => {
       <div className="container mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">About Me</h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary to-primary/60 mx-auto"></div>
+          {/* <div className="w-24 h-1 bg-gradient-to-r from-primary to-primary/60 mx-auto"></div> */}
         </div>
 
         <div className="grid lg:grid-cols-1 gap-12 items-center">

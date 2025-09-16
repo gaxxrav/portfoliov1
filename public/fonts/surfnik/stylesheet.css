@@ -1,0 +1,78 @@
+@font-face {
+    font-family: 'Surfnik';
+    src: url('SurfnikLight.eot');
+    src: local('Surfnik Light'), local('SurfnikLight'),
+        url('SurfnikLight.eot?#iefix') format('embedded-opentype'),
+        url('SurfnikLight.woff2') format('woff2'),
+        url('SurfnikLight.woff') format('woff'),
+        url('SurfnikLight.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Surfnik Outline';
+    src: url('SurfnikOutline.eot');
+    src: local('Surfnik Outline'), local('SurfnikOutline'),
+        url('SurfnikOutline.eot?#iefix') format('embedded-opentype'),
+        url('SurfnikOutline.woff2') format('woff2'),
+        url('SurfnikOutline.woff') format('woff'),
+        url('SurfnikOutline.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Surfnik';
+    src: url('SurfnikRegular.eot');
+    src: local('Surfnik'), local('SurfnikRegular'),
+        url('SurfnikRegular.eot?#iefix') format('embedded-opentype'),
+        url('SurfnikRegular.woff2') format('woff2'),
+        url('SurfnikRegular.woff') format('woff'),
+        url('SurfnikRegular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Surfnik Reverse';
+    src: url('SurfnikReverse.eot');
+    src: local('Surfnik Reverse'), local('SurfnikReverse'),
+        url('SurfnikReverse.eot?#iefix') format('embedded-opentype'),
+        url('SurfnikReverse.woff2') format('woff2'),
+        url('SurfnikReverse.woff') format('woff'),
+        url('SurfnikReverse.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Surfnik Inline';
+    src: url('SurfnikInline.eot');
+    src: local('Surfnik Inline'), local('SurfnikInline'),
+        url('SurfnikInline.eot?#iefix') format('embedded-opentype'),
+        url('SurfnikInline.woff2') format('woff2'),
+        url('SurfnikInline.woff') format('woff'),
+        url('SurfnikInline.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Surfnik InAndOut';
+    src: url('SurfnikInAndOut.eot');
+    src: local('Surfnik InAndOut'), local('SurfnikInAndOut'),
+        url('SurfnikInAndOut.eot?#iefix') format('embedded-opentype'),
+        url('SurfnikInAndOut.woff2') format('woff2'),
+        url('SurfnikInAndOut.woff') format('woff'),
+        url('SurfnikInAndOut.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

@@ -30,17 +30,17 @@ const Header = () => {
     }`}>
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <div className="text-2xl font-bold">
+          <div className="text-2xl" style={{ fontFamily: '"Haarlem Deco", sans-serif' }}>
             <span className="text-primary">gaxrav</span>
             <span className="text-accent">.dev</span>
           </div>
           
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <button onClick={() => scrollToSection('home')} className="font-bold text-primary hover:text-accent transition-colors">Home</button>
-            <button onClick={() => scrollToSection('about')} className="font-bold text-primary hover:text-accent transition-colors">About</button>
-            <button onClick={() => scrollToSection('projects')} className="font-bold text-primary hover:text-accent transition-colors">Projects</button>
-            <button onClick={() => scrollToSection('skills')} className="font-bold text-primary hover:text-accent transition-colors">Skills</button>
+          <nav className="hidden md:flex items-center space-x-8" style={{ fontFamily: '"Haarlem Deco", sans-serif' }}>
+            <button onClick={() => scrollToSection('home')} className="text-xl text-primary hover:text-accent transition-colors tracking-wider">Home</button>
+            <button onClick={() => scrollToSection('about')} className="text-xl text-primary hover:text-accent transition-colors">About</button>
+            <button onClick={() => scrollToSection('projects')} className="text-xl text-primary hover:text-accent transition-colors">Projects</button>
+            <button onClick={() => scrollToSection('skills')} className="text-xl text-primary hover:text-accent transition-colors">Skills</button>
           </nav>
 
           {/* Mobile Navigation Toggle */}
@@ -57,12 +57,12 @@ const Header = () => {
 
         {/* Mobile Navigation Menu */}
         {isOpen && (
-          <nav className="md:hidden mt-4 py-4 border-t border-border/20">
+          <nav className="md:hidden mt-4 py-4 border-t border-border/20" style={{ fontFamily: '"TheTide", sans-serif' }}>
             <div className="flex flex-col space-y-4">
-              <button onClick={() => scrollToSection('home')} className="text-left font-bold hover:text-accent transition-colors">Home</button>
-              <button onClick={() => scrollToSection('about')} className="text-left font-bold hover:text-accent transition-colors">About</button>
-              <button onClick={() => scrollToSection('projects')} className="text-left font-bold hover:text-accent transition-colors">Projects</button>
-              <button onClick={() => scrollToSection('skills')} className="text-left font-bold hover:text-accent transition-colors">Skills</button>
+              <button onClick={() => scrollToSection('home')} className="text-left text-xl text-primary hover:text-accent transition-colors">Home</button>
+              <button onClick={() => scrollToSection('about')} className="text-left text-xl text-primary hover:text-accent transition-colors">About</button>
+              <button onClick={() => scrollToSection('projects')} className="text-left text-xl text-primary hover:text-accent transition-colors">Projects</button>
+              <button onClick={() => scrollToSection('skills')} className="text-left text-xl text-primary hover:text-accent transition-colors">Skills</button>
             </div>
           </nav>
         )}

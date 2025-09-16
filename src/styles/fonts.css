@@ -1,0 +1,37 @@
+@font-face {
+  font-family: 'Long Summer';
+  src: url('/fonts/LongSummer.otf') format('opentype'),
+       url('/fonts/LongSummerRegular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SurfnikRegular';
+  src: url('/fonts/surfnik/SurfnikRegular.eot') format('embedded-opentype'),
+       url('/fonts/surfnik/SurfnikRegular.woff2') format('woff2'),
+       url('/fonts/surfnik/SurfnikRegular.woff') format('woff'),
+       url('/fonts/surfnik/SurfnikRegular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Haarlem Deco';
+  src: url('/fonts/harlem/HaarlemDeco-DEMO.woff2') format('woff2'),
+       url('/fonts/harlem/HaarlemDeco-DEMO.woff') format('woff'),
+       url('/fonts/harlem/HaarlemDeco-DEMO.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TheTide';
+  src: url('/fonts/The Tide.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}

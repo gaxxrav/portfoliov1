@@ -131,7 +131,7 @@ const Skills = () => {
       <div className="container mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">Technical Skills</h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary to-primary/60 mx-auto mb-4"></div>
+          {/* <div className="w-24 h-1 bg-gradient-to-r from-primary to-primary/60 mx-auto mb-4"></div> */}
           <p className="text-gray-300 mb-8 leading-relaxed text-center max-w-4xl mx-auto">
             A comprehensive overview of my technical expertise across various domains.
           </p>
