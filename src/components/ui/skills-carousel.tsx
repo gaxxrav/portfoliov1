@@ -1,4 +1,4 @@
-import { InfiniteSlider } from './infinite-slider';
+import { useState, useEffect } from 'react';
 import {
   SiPython,
   SiJavascript,
@@ -75,34 +75,116 @@ const skillsData: SkillItem[] = [
   { name: 'Godot', icon: <SiGodotengine className="w-5 h-5" />, category: 'Game Engines' },
 ];
 
+// Custom InfiniteSlider Component with smooth hover transitions
+function InfiniteSlider({ 
+  children, 
+  gap = 32, 
+  duration = 80, 
+  className = "" 
+}: { 
+  children: ReactNode[], 
+  gap?: number, 
+  duration?: number, 
+  className?: string 
+}) {
+  const [isHovered, setIsHovered] = useState(false);
+  
+  // Double the children to create seamless loop
+  const doubledChildren = [...children, ...children];
+  
+  return (
+    <div className={`w-full overflow-visible ${className}`}>
+      <div
+        className="flex items-center"
+        style={{
+          gap: `${gap}px`,
+          animation: `infiniteSlide ${duration}s linear infinite`,
+          animationPlayState: isHovered ? 'paused' : 'running',
+          width: 'max-content',
+        }}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        {doubledChildren.map((child, index) => (
+          <div key={index} className="flex-shrink-0">
+            {child}
+          </div>
+        ))}
+      </div>
+      
+      <style jsx>{`
+        @keyframes infiniteSlide {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(calc(-50% - ${gap / 2}px));
+            animation-timing-function: ease-in-out;
+          }
+        }
+      `}</style>
+    </div>
+  );
+}
+
 interface SkillsCarouselProps {
   className?: string;
 }
 
 export function SkillsCarousel({ className }: SkillsCarouselProps) {
+  const allSkills = [...skillsData];
+  
   return (
     <div className={className}>
-      {/* Intentionally no heading (per user's last preference) */}
-      <InfiniteSlider
-        gap={24}
-        duration={100}
-        durationOnHover={140}
-        className="w-full"
-      >
-        {skillsData.map((skill, index) => (
-          <div
-            key={index}
-            className="flex items-center gap-3 px-4 py-3 bg-black/20 backdrop-blur-md \
-                       border border-white/10 rounded-lg hover:bg-black/30 \
-                       transition-all duration-300 min-w-fit whitespace-nowrap \
-                       shadow-lg hover:shadow-xl hover:border-white/20 \
-                       backdrop-saturate-150"
-          >
-            <div className="text-white">{skill.icon}</div>
-            <span className="text-sm font-medium text-white">{skill.name}</span>
-          </div>
-        ))}
-      </InfiniteSlider>
+      <div className="relative py-16 w-screen left-1/2 right-1/2 -mx-[50vw]">
+        
+        <InfiniteSlider
+          gap={40}
+          duration={180} // Slowed down further from 120 to 180
+          className="py-8 z-0 relative w-full"
+        >
+          {allSkills.map((skill, index) => (
+            <div
+              key={`${skill.name}-${index}`}
+              className="flex items-center justify-center gap-4 px-6 py-4 rounded-xl bg-gradient-to-br from-white/10 to-white/[0.05] backdrop-blur-md border border-white/20 hover:border-primary/70 transition-all duration-300 hover:shadow-xl hover:shadow-primary/20 cursor-pointer"
+              style={{
+                boxShadow: '0 8px 40px rgba(0, 0, 0, 0.2)',
+                minWidth: '200px',
+                height: '90px',
+                animation: `bob 4s cubic-bezier(0.25, 0.1, 0.25, 1) infinite`,
+                animationDelay: `${index * 0.25}s`,
+                transformOrigin: 'center bottom',
+                willChange: 'transform, opacity',
+                position: 'relative',
+                zIndex: 10,
+              }}
+            >
+              <div className="text-3xl transform transition-transform duration-300 hover:scale-110 flex-shrink-0">
+                {skill.icon}
+              </div>
+              <span className="text-sm font-medium text-center flex-shrink-0 whitespace-nowrap">{skill.name}</span>
+            </div>
+          ))}
+        </InfiniteSlider>
+        
+        {/* Custom CSS for bob animation with controlled vertical movement */}
+        <style jsx>{`
+          @keyframes bob {
+          0%, 100% {
+            transform: translateY(0) scale(1);
+            opacity: 0.85;
+          }
+          50% {
+            transform: translateY(-15px) scale(1.03);
+            opacity: 0.95;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+          }
+          }
+        `}</style>
+
+      </div>
     </div>
   );
 }
+
+export default SkillsCarousel;

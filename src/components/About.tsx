@@ -2,7 +2,7 @@ import { HandWrittenTitle } from '@/components/ui/hand-writing-text'
 
 const About = () => {
   return (
-    <section id="about" className="py-12 px-4 bg-gray-900">
+    <section id="about" className="py-12 px-4">
       <div className="container mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">About Me</h2>

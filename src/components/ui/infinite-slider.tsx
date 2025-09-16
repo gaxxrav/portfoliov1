@@ -1,7 +1,7 @@
 'use client';
 import { cn } from '@/lib/utils';
-import { useMotionValue, animate, motion } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { useMotionValue, animate, motion, useTransform } from 'framer-motion';
+import { useState, useEffect, useRef } from 'react';
 import useMeasure from 'react-use-measure';
 
 type InfiniteSliderProps = {
@@ -28,6 +28,8 @@ export function InfiniteSlider({
   const translation = useMotionValue(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [key, setKey] = useState(0);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
     let controls;
@@ -72,35 +74,101 @@ export function InfiniteSlider({
     reverse,
   ]);
 
-  const hoverProps = durationOnHover
-    ? {
-        onHoverStart: () => {
-          setIsTransitioning(true);
-          setCurrentDuration(durationOnHover);
-        },
-        onHoverEnd: () => {
-          setIsTransitioning(true);
-          setCurrentDuration(duration);
-        },
-      }
-    : {};
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const getWaveOffset = (index: number, progress: number) => {
+    const itemOffset = index * 100; 
+    const scrollOffset = scrollY * 0.1; 
+    return Math.sin((progress + itemOffset + scrollOffset) * 0.01) * 30; 
+  };
 
   return (
-    <div className={cn('overflow-hidden', className)}>
-      <motion.div
-        className='flex w-max'
+    <div 
+      ref={ref}
+      className={cn(
+        'relative overflow-hidden',
+        direction === 'horizontal' ? 'h-[200px]' : 'w-full',
+        className
+      )}
+      onMouseEnter={() => {
+        if (durationOnHover) {
+          setCurrentDuration(durationOnHover);
+        }
+      }}
+      onMouseLeave={() => {
+        if (durationOnHover) {
+          setCurrentDuration(duration);
+        }
+      }}
+    >
+      <motion.div 
+        className={cn('flex absolute', direction === 'horizontal' ? 'flex-row' : 'flex-col')}
         style={{
-          ...(direction === 'horizontal'
-            ? { x: translation }
-            : { y: translation }),
+          [direction === 'horizontal' ? 'x' : 'y']: translation,
           gap: `${gap}px`,
-          flexDirection: direction === 'horizontal' ? 'row' : 'column',
+          top: direction === 'horizontal' ? '50%' : 0,
+          transform: direction === 'horizontal' ? 'translateY(-50%)' : 'none',
         }}
-        ref={ref}
-        {...hoverProps}
       >
-        {children}
-        {children}
+        {Array.isArray(children) ? children.map((child, index) => (
+          <motion.div
+            key={`first-${index}`}
+            style={{
+              y: useTransform(translation, (value) => 
+                getWaveOffset(index, value)
+              ),
+              rotate: useTransform(translation, (value) => 
+                `${Math.sin((value + index * 20) * 0.01) * 5}deg`
+              ),
+              scale: useTransform(translation, (value) => 
+                1 + Math.sin((value + index * 30) * 0.01) * 0.1
+              ),
+              transition: { type: 'spring', stiffness: 100, damping: 15 }
+            }}
+            className="origin-center"
+          >
+            {child}
+          </motion.div>
+        )) : children}
+      </motion.div>
+      <motion.div 
+        className={cn('flex absolute', direction === 'horizontal' ? 'flex-row' : 'flex-col')}
+        style={{
+          [direction === 'horizontal' ? 'x' : 'y']: useTransform(translation, (value) => 
+            value + (direction === 'horizontal' ? width + gap : height + gap)
+          ),
+          gap: `${gap}px`,
+          top: direction === 'horizontal' ? '50%' : 0,
+          transform: direction === 'horizontal' ? 'translateY(-50%)' : 'none',
+        }}
+      >
+        {Array.isArray(children) ? children.map((child, index) => (
+          <motion.div
+            key={`second-${index}`}
+            style={{
+              y: useTransform(translation, (value) => 
+                getWaveOffset(index, value + (width || 0) + gap)
+              ),
+              rotate: useTransform(translation, (value) => 
+                `${Math.sin((value + (width || 0) + gap + index * 20) * 0.01) * 5}deg`
+              ),
+              scale: useTransform(translation, (value) => 
+                1 + Math.sin((value + (width || 0) + gap + index * 30) * 0.01) * 0.1
+              ),
+              transition: { type: 'spring', stiffness: 100, damping: 15 }
+            }}
+            className="origin-center"
+          >
+            {child}
+          </motion.div>
+        )) : children}
       </motion.div>
     </div>
   );

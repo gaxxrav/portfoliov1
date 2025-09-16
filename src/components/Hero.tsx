@@ -1,13 +1,11 @@
 import { Button as MovingBorderButton } from '@/components/ui/moving-border';
 import { SkillsCarousel } from '@/components/ui/skills-carousel';
-import ShaderBackground from '@/components/ui/shader-background';
 import { LiquidButton } from '@/components/ui/liquid-button';
 import { Github, Linkedin, Mail } from 'lucide-react';
 
 const Hero = () => {
   return (
-    <ShaderBackground className="min-h-screen">
-      <section id="home" className="min-h-screen flex items-center justify-center px-4 py-20 relative">
+    <section id="home" className="min-h-screen flex items-center justify-center px-4 py-20 relative">
         <div className="container mx-auto text-center">
           <div className="animate-fade-in">
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
@@ -36,7 +34,10 @@ const Hero = () => {
                 href="https://github.com/gaxxrav"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="h-12 w-12 flex items-center justify-center rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 text-white shadow-[0_0_8px_rgba(74,222,128,0.5)] hover:shadow-[0_0_15px_rgba(74,222,128,0.7)] transition-all duration-300"
+                className="h-12 w-12 flex items-center justify-center rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 text-white 
+                shadow-[0_0_12px_rgba(74,222,128,0.8),0_0_24px_rgba(74,222,128,0.6)] 
+                hover:shadow-[0_0_20px_rgba(74,222,128,0.9),0_0_40px_rgba(74,222,128,0.7)] 
+                transition-all duration-300"
               >
                 <Github className="h-5 w-5" />
               </a>
@@ -56,7 +57,10 @@ transition-all duration-300"
               
               <a
                 href="mailto:gaurav.murali3@gmail.com"
-                className="h-12 w-12 flex items-center justify-center rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 text-white shadow-[0_0_8px_rgba(234,179,8,0.5)] hover:shadow-[0_0_15px_rgba(234,179,8,0.7)] transition-all duration-300"
+                className="h-12 w-12 flex items-center justify-center rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 text-white 
+                shadow-[0_0_12px_rgba(234,179,8,0.8),0_0_24px_rgba(234,179,8,0.6)] 
+                hover:shadow-[0_0_20px_rgba(234,179,8,0.9),0_0_40px_rgba(234,179,8,0.7)] 
+                transition-all duration-300"
               >
                 <Mail className="h-5 w-5" />
               </a>
@@ -65,11 +69,7 @@ transition-all duration-300"
             <SkillsCarousel className="mt-8" />
           </div>
         </div>
-        
-        {/* Gradient fade transition to dark background */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-gray-900 pointer-events-none"></div>
       </section>
-    </ShaderBackground>
   );
 };
 
