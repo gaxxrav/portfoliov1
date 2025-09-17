@@ -132,20 +132,18 @@ const Skills = () => {
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">Technical Skills</h2>
           {/* <div className="w-24 h-1 bg-gradient-to-r from-primary to-primary/60 mx-auto mb-4"></div> */}
-          <p className="text-gray-300 mb-8 leading-relaxed text-center max-w-4xl mx-auto">
-            A comprehensive overview of my technical expertise across various domains.
-          </p>
+
           
           {/* Search Input */}
           <div className="max-w-md mx-auto mb-8">
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-100 h-4 w-4" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-black h-5 w-5" />
               <Input
                 type="text"
                 placeholder="Search skills..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10 bg-background/50 border-border/30 focus:border-primary/50 placeholder-gray-100"
+                className="pl-10 text-lg bg-white/90 backdrop-blur-sm border border-gray-300 focus:border-black focus:ring-1 focus:ring-black/30 placeholder-gray-500 text-black transition-all duration-200"
               />
             </div>
           </div>
@@ -172,14 +170,14 @@ const Skills = () => {
                 >
                   <div className="flex flex-col h-full">
                     <div className="text-center mb-4">
-                      <h3 className="text-xl font-semibold">{category.title}</h3>
+                      <h3 className="text-xl font-semibold text-white">{category.title}</h3>
                     </div>
                     <div className="flex-1">
                       <div className="flex flex-wrap gap-2">
                         {category.skills.map((skill, skillIndex) => (
                           <span 
                             key={skillIndex}
-                            className="px-3 py-1.5 bg-accent/10 hover:bg-accent/20 rounded-full text-sm font-medium transition-colors duration-200 cursor-default"
+                            className="px-4 py-2 bg-accent/10 hover:bg-accent/20 rounded-full text-base font-medium text-white/90 hover:text-white transition-colors duration-200 cursor-default"
                           >
                             {skill}
                           </span>
@@ -196,12 +194,12 @@ const Skills = () => {
         {/* Additional Skills Tags - Only show when searching and results found */}
         {hasResults && filteredAdditionalSkills.length > 0 && searchTerm && (
           <div className="mt-16 text-center">
-            <h3 className="text-xl font-semibold mb-8">Additional Technologies</h3>
+            <h3 className="text-xl font-semibold mb-8 text-white">Additional Technologies</h3>
             <div className="flex flex-wrap justify-center gap-3">
               {filteredAdditionalSkills.map((tech, index) => (
                 <span 
                   key={index}
-                  className="px-4 py-2 bg-card border border-border/20 rounded-full text-sm hover:border-accent/50 hover:bg-accent/5 transition-all duration-300 cursor-default"
+                  className="px-5 py-2.5 bg-card border border-border/20 rounded-full text-base text-white/90 hover:text-white hover:border-accent/50 hover:bg-accent/5 transition-all duration-300 cursor-default"
                 >
                   {tech}
                 </span>

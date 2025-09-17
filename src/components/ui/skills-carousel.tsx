@@ -112,17 +112,19 @@ function InfiniteSlider({
         ))}
       </div>
       
-      <style jsx>{`
-        @keyframes infiniteSlide {
-          0% {
-            transform: translateX(0);
+      <style dangerouslySetInnerHTML={{
+        __html: `
+          @keyframes infiniteSlide {
+            0% {
+              transform: translateX(0);
+            }
+            100% {
+              transform: translateX(calc(-50% - ${gap / 2}px));
+              animation-timing-function: ease-in-out;
+            }
           }
-          100% {
-            transform: translateX(calc(-50% - ${gap / 2}px));
-            animation-timing-function: ease-in-out;
-          }
-        }
-      `}</style>
+        `
+      }} />
     </div>
   );
 }
@@ -135,22 +137,21 @@ export function SkillsCarousel({ className }: SkillsCarouselProps) {
   const allSkills = [...skillsData];
   
   return (
-    <div className={className}>
-      <div className="relative py-16 w-screen left-1/2 right-1/2 -mx-[50vw]">
-        
+    <div className={`w-full overflow-hidden ${className}`}>
+      <div className="relative py-8 w-full">
         <InfiniteSlider
-          gap={40}
-          duration={180} // Slowed down further from 120 to 180
-          className="py-8 z-0 relative w-full"
+          gap={32}
+          duration={180}
+          className="py-4 z-0 relative w-full"
         >
           {allSkills.map((skill, index) => (
             <div
               key={`${skill.name}-${index}`}
-              className="flex items-center justify-center gap-4 px-6 py-4 rounded-xl bg-gradient-to-br from-white/10 to-white/[0.05] backdrop-blur-md border border-white/20 hover:border-primary/70 transition-all duration-300 hover:shadow-xl hover:shadow-primary/20 cursor-pointer"
+              className="flex items-center justify-center gap-3 px-4 py-2 rounded-xl bg-gradient-to-br from-gray-900/70 to-gray-900/40 backdrop-blur-md border border-white/10 hover:border-primary/75 transition-all duration-300 hover:shadow-xl hover:shadow-primary/20 cursor-pointer"
               style={{
-                boxShadow: '0 8px 40px rgba(0, 0, 0, 0.2)',
-                minWidth: '200px',
-                height: '90px',
+                boxShadow: '0 4px 15px rgba(0, 0, 0, 0.15)',
+                minWidth: '140px',
+                height: '60px',
                 animation: `bob 4s cubic-bezier(0.25, 0.1, 0.25, 1) infinite`,
                 animationDelay: `${index * 0.25}s`,
                 transformOrigin: 'center bottom',
@@ -159,29 +160,30 @@ export function SkillsCarousel({ className }: SkillsCarouselProps) {
                 zIndex: 10,
               }}
             >
-              <div className="text-3xl transform transition-transform duration-300 hover:scale-110 flex-shrink-0">
+              <div className="text-2xl text-white transform transition-transform duration-300 hover:scale-110 flex-shrink-0">
                 {skill.icon}
               </div>
-              <span className="text-sm font-medium text-center flex-shrink-0 whitespace-nowrap">{skill.name}</span>
+              <span className="text-xs text-white font-medium text-center flex-shrink-0 whitespace-nowrap">{skill.name}</span>
             </div>
           ))}
         </InfiniteSlider>
         
         {/* Custom CSS for bob animation with controlled vertical movement */}
-        <style jsx>{`
-          @keyframes bob {
-          0%, 100% {
-            transform: translateY(0) scale(1);
-            opacity: 0.85;
-          }
-          50% {
-            transform: translateY(-15px) scale(1.03);
-            opacity: 0.95;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-          }
-          }
-        `}</style>
-
+        <style dangerouslySetInnerHTML={{
+          __html: `
+            @keyframes bob {
+              0%, 100% {
+                transform: translateY(0) scale(1);
+                opacity: 0.85;
+              }
+              50% {
+                transform: translateY(-6px) scale(1.02);
+                opacity: 0.95;
+                box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+              }
+            }
+          `
+        }} />
       </div>
     </div>
   );

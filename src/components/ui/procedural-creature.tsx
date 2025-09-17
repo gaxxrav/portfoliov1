@@ -20,9 +20,11 @@ const ProceduralCreature = () => {
         if (!ctx) return;
 
         // Set canvas style
-        canvas.style.backgroundColor = "rgba(64, 53, 53, 0.1)";
-        ctx.strokeStyle = "#6f553f";
-        ctx.lineWidth = 2;
+        canvas.style.backgroundColor = "transparent";
+        
+        // Set line style for the creature (simplified for better performance)
+        ctx.strokeStyle = "rgba(255, 255, 255, 0.9)";
+        ctx.lineWidth = 1.5;
 
         let segmentCount = 0;
 

@@ -26,7 +26,7 @@ const LiquidButton = React.forwardRef<HTMLAnchorElement, LiquidButtonProps>(
           'border-2 border-black rounded-lg', // Default thin black border
           'bg-transparent',
           'transition-all duration-300',
-          'hover:border-[#4973ff] hover:shadow-[0_0_15px_rgba(73,115,255,0.5)]',
+          'hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.5)]',
           'hover:bg-[rgba(255,255,255,0.05)] hover:backdrop-blur-sm', // Glass effect on hover
           className
         )}

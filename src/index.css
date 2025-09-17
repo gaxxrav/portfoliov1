@@ -5,6 +5,10 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    font-family: 'Haarlem Deco', sans-serif;
+  }
+  
   :root {
     --background: 238 238 238;
     --foreground: 20 19 19;
