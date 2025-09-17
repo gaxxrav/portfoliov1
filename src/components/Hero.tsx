@@ -9,13 +9,13 @@ const Hero = () => {
         <div className="container mx-auto text-center">
           <div className="animate-fade-in">
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
-              <span className="block text-white" style={{ fontFamily: '"Long Summer", cursive', fontSize: '1.5em' }}>HEYA, I'M</span>
-              <span className="block text-transparent bg-gradient-to-r from-yellow-500 via-red-100 to-indigo-800 bg-clip-text" style={{ fontFamily: '"Long Summer", cursive', fontSize: '1.2em' }}>
+              <span className="block text-white" style={{ fontFamily: '"Long Summer", cursive', fontSize: '0.8em' }}>HEYA!   I'M</span>
+              <span className="block text-transparent bg-gradient-to-r from-yellow-500 via-red-100 to-indigo-800 bg-clip-text" style={{ fontFamily: '"Long Summer", sans-serif', fontSize: '1em' }}>
                 GAURAV MURALI
               </span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-white/80 mb-8 max-w-3xl mx-auto" style={{ fontFamily: '"Long Summer", cursive' }}>
+            <p className="text-xl md:text-2xl text-white/80 mb-8 max-w-3xl mx-auto" style={{ fontFamily: '"Haarlem Deco", cursive' }}>
               I'm a passionate problem-solver with an eye for design, driven to build meaningful projects that inspire me and benefit others.
             </p>
 
