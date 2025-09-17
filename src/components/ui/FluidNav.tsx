@@ -1,6 +1,8 @@
+"use client";
+
+import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Home, User, Folder, Code, MessageSquare } from 'lucide-react';
+import { Menu, X, Home, User, Folder, MessageSquare } from 'lucide-react';
 
 const navItems = [
   { id: 'home', label: 'Home', icon: Home },
@@ -9,31 +11,47 @@ const navItems = [
   { id: 'contact', label: 'Contact', icon: MessageSquare },
 ];
 
-const Header = () => {
-  console.log('Header component rendering...');
+const FluidNav = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  
-  // Debug log state changes
-  useEffect(() => {
-    console.log('Header state updated:', { isHovered, isOpen, scrolled });
-  }, [isHovered, isOpen, scrolled]);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsHovered(false);
+      element.scrollIntoView({ behavior: "smooth" });
       setIsOpen(false);
+    }
+  };
+
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: 'spring',
+        stiffness: 300,
+        damping: 20
+      }
     }
   };
 
@@ -86,37 +104,15 @@ const Header = () => {
                   >
                     <motion.div 
                       className="flex flex-col items-end space-y-4"
-                      variants={{
-                        open: {
-                          transition: { staggerChildren: 0.1, delayChildren: 0.1 }
-                        },
-                        closed: {
-                          transition: { staggerChildren: 0.05, staggerDirection: -1 }
-                        }
-                      }}
-                      initial="closed"
-                      animate="open"
+                      variants={containerVariants}
+                      initial="hidden"
+                      animate="show"
                     >
-                      {navItems.map((item, index) => (
+                      {navItems.map((item) => (
                         <motion.div
                           key={item.id}
                           className="flex items-center space-x-3 group"
-                          variants={{
-                            open: { 
-                              opacity: 1, 
-                              x: 0,
-                              transition: { 
-                                type: 'spring', 
-                                stiffness: 300, 
-                                damping: 20 
-                              }
-                            },
-                            closed: { 
-                              opacity: 0, 
-                              x: 20,
-                              transition: { duration: 0.2 }
-                            }
-                          }}
+                          variants={itemVariants}
                         >
                           <motion.span 
                             className="text-white/70 group-hover:text-white text-sm font-medium transition-colors"
@@ -145,7 +141,7 @@ const Header = () => {
         </div>
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default FluidNav;
