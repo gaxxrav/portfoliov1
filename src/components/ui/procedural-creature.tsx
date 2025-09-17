@@ -425,7 +425,7 @@ const ProceduralCreature = () => {
             ref={canvasRef}
             width={400}
             height={300}
-            className="border border-accent/20 rounded-lg bg-accent/5"
+            className=""
         />
     );
 };

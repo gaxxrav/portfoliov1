@@ -128,14 +128,12 @@ const Skills = () => {
 
   return (
     <section id="skills" className="py-12 px-4">
-      <div className="container mx-auto">
-        <div className="text-center mb-12">
+      <div className="container mx-auto px-4">
+        <div className="mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">Technical Skills</h2>
-          {/* <div className="w-24 h-1 bg-gradient-to-r from-primary to-primary/60 mx-auto mb-4"></div> */}
-
           
           {/* Search Input */}
-          <div className="max-w-md mx-auto mb-8">
+          <div className="max-w-md mb-8">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-black h-5 w-5" />
               <Input

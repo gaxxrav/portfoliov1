@@ -99,6 +99,7 @@ function HandWrittenTitle({
                         initial={{ opacity: 0, x: 50 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 1, duration: 0.8 }}
+                        className="bg-black/10 backdrop-blur-sm rounded-lg transition-all duration-300 border border-white/5 overflow-hidden w-[400px] h-[300px] flex items-center justify-center"
                     >
                         <ProceduralCreature />
                     </motion.div>
